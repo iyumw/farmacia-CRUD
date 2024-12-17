@@ -1,11 +1,14 @@
 import { Produto } from "../model/Produto";
 import { ProdutoRepository } from "../repository/ProdutoRepository";
 
+// Gerencia a lógica de negócios dos produtos
+// e implementa a interface ProdutoRepository para garantir que os métodos sejam definidos
 export class ProdutoController implements ProdutoRepository {
 
+    // Lista que armazena os produtos
     private listaProdutos = new Array<Produto>();
-    tipoProduto: any;
-    id: number = 0;
+    // Controla os IDs dos produtos, para que cada produto tenha um ID único
+    public id: number = 0;
 
     criar(produto: Produto): void {
         this.listaProdutos.push(produto)
@@ -29,6 +32,7 @@ export class ProdutoController implements ProdutoRepository {
         const buscarProduto = this.buscarId(produto.id);
 
         if(buscarProduto !== null) {
+            // Atualiza o produto na lista, substituindo o antigo pelo novo, a partir do índice do produto
             this.listaProdutos[this.listaProdutos.indexOf(buscarProduto)] = produto;
         } else {
             console.log(`Produto com ID ${produto.id} não encontrado.`);
@@ -47,6 +51,7 @@ export class ProdutoController implements ProdutoRepository {
 
     //Métodos Auxiliares
     public buscarId(id: number): Produto | null {
+        // Itera pela lista de produtos e retorna o produto que tem o ID correspondente
         for (let produto of this.listaProdutos){
             if(produto.id === id){
                 return produto;

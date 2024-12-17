@@ -16,6 +16,8 @@ export class Cosmetico extends Produto {
 		this._fragrancias = nome;
 	}
 
+// Método visualizar sobrescrito, que chama o método visualizar da classe base Produto
+// e depois exibe a fragrância do cosmético
     public visualizar(): void {
         super.visualizar();
         console.log("Fragrâncias: " + this._fragrancias);

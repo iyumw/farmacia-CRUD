@@ -6,8 +6,9 @@ import { ProdutoController } from "./controller/ProdutoController";
 export function main() {
    let id, tipo, preco: number;
    let nome: string;
-
+// Definição dos tipos de produtos disponíveis
    const tipoProduto = ['Medicamento', 'Cosmetico']
+// Instancia o controller de produtos, que gerencia as operações sobre os produtos
    let produtos = new ProdutoController();
 
    while (true) {
@@ -16,6 +17,7 @@ export function main() {
 
     switch (opcao) {
     case 1:
+        // Cadastrar um produto novo
         nome = readlinesync.question("Nome do produto: ")
         preco = readlinesync.questionFloat("Preço do produto: ")
 
@@ -23,11 +25,13 @@ export function main() {
 
         switch(tipo) {
             case 1:
+                // Medicamento
                 console.log("Digite a marca do medicamento: " )
                 const marca = readlinesync.question("")
                 produtos.criar(new Medicamento(produtos.gerarId(), nome, tipo, preco, marca))
             break;
             case 2:
+                // Cosmético
                 console.log("Digite a porra da fragrancia: " )
                 const fragrancias = readlinesync.question("")
                 produtos.criar(new Cosmetico(produtos.gerarId(), nome, tipo, preco, fragrancias))
@@ -37,21 +41,25 @@ export function main() {
         keyPress();
         break
     case 2:
+        // Listar todos os produtos
         produtos.listar()
         keyPress();
         break
     case 3:
+        // Pesquisar um produto por ID
         id = readlinesync.questionInt("ID do produto: ")
         produtos.pesquisar(id)
         keyPress();
         break
     case 4:
+        // Atualizar um produto por ID
         id = readlinesync.questionInt("ID do produto: ")
         const produtoExistente = produtos.buscarId(id);
         if(produtoExistente) { 
             nome = readlinesync.question("Novo nome do produto: ")
             preco = readlinesync.questionFloat("Novo preço do produto: ")
 
+            // Verifica o tipo do produto para atualizar 
             if (produtoExistente.tipo === 1) {
                 console.log("Digite a nova marca do medicamento: ");
                 const marca = readlinesync.question("");
@@ -67,6 +75,7 @@ export function main() {
         keyPress();
         break
     case 5:
+        // Deletar um produto por ID
         id = readlinesync.questionInt("ID do produto: ")
         produtos.deletar(id);
         keyPress();
@@ -104,9 +113,10 @@ function about() {
     process.exit(0)
 }
 
+// Função que aguarda o pressionamento de uma tecla para continuar
 function keyPress(): void {
     console.log("\nPressione enter para continuar...")
-    readlinesync.prompt();
+    readlinesync.prompt(); // Aguarda o usuário pressionar Enter
 }
 
 main();

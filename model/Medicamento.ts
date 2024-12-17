@@ -16,6 +16,8 @@ export class Medicamento extends Produto {
 		this._marca = generico;
 	}
 
+// Método visualizar sobrescrito, que chama o método visualizar da classe base Produto
+// e depois exibe a marca do medicamento
     public visualizar(): void {
         super.visualizar();
         console.log("Marca: " + this._marca);

@@ -1,18 +1,20 @@
 import { colors } from "../util/cores";
 
+
+// Define a classe abstrata, que serve como base para outras classes de produtos
 export abstract class Produto {
     private _id:number;
     private _nome:string;
     private _tipo:number;
     private _preco:number;
-
+// Construtor para inicializar os atributos
 	constructor(id: number, nome: string, tipo: number, preco: number) {
 		this._id = id;
 		this._nome = nome;
 		this._tipo = tipo;
 		this._preco = preco;
 	}
-
+// Getters e setters para acessar os valores dos atributos privados
 	public get id(): number {
 		return this._id;
 	}
@@ -47,9 +49,9 @@ export abstract class Produto {
 
 public visualizar(): void {
     console.log(colors.fg.magenta + "\n" + "=".repeat(25) + "❀ Dados da Conta ❀" + "=".repeat(26) + "\n" + colors.reset)
-        console.log("Numero do Id: " + this._id)
-        console.log("Nome: " + this._nome)
-        console.log("Tipo: " + (this._tipo))
-        console.log("Preco: R$ " + this._preco.toFixed(2))
+    console.log("Numero do Id: " + this._id)
+    console.log("Nome: " + this._nome)
+    console.log("Tipo: " + (this._tipo))
+    console.log("Preco: R$ " + this._preco.toFixed(2))
 }
 }
