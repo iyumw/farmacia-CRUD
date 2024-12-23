@@ -1,8 +1,8 @@
 import readlinesync = require('readline-sync');
-import { colors } from "./util/cores";
-import { Medicamento } from "./model/Medicamento";
-import { Cosmetico } from "./model/Cometico";
-import { ProdutoController } from "./controller/ProdutoController";
+import { colors } from "./src/util/cores";
+import { Medicamento } from "./src/model/Medicamento";
+import { Cosmetico } from "./src/model/Cometico";
+import { ProdutoController } from "./src/controller/ProdutoController";
 export function main() {
    let id, tipo, preco: number;
    let nome: string;
